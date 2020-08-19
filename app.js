@@ -26,3 +26,10 @@ app.get('/', (req, res) => {
 app.get('/about', (req, res) => {
     res.render('about', {title: "About"})
 })
+
+/*================================================================ 
+    SETUP SIGNUP GET ROUTER
+================================================================*/
+app.get('/signup', (req, res) => {
+    res.render('signup', {title: "Signup"})
+})
