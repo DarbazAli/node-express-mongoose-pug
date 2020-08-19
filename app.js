@@ -72,6 +72,6 @@ app.post('/signup', (req, res) => {
 app.get('/people', (req, res) => {
     Person.find((err, response) => {
         if ( err ) res.send(err)
-         res.render('people', {people: response})
+         res.render('index', {people: response})
     })
 })

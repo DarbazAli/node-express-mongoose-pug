@@ -6,4 +6,8 @@ html
         include ./header.pug
         h1 Hello From Pug Template
 
+        a(href="/people") See people
+        if people
+            include ./people.pug
+
     include ./footer.pug
