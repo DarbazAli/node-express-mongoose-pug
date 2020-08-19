@@ -67,7 +67,11 @@ app.post('/signup', (req, res) => {
     SETUP PEOPLE ROUTER TO RETRIVE DATA FROM DB
 ================================================================*/
 app.get('/people', (req, res) => {
-    Person.find((err, response) => {
+    // get query name from submit form
+    let nanme = req.query.query
+    
+    // look for names with query name inside the db
+    Person.find({name: nanme}, (err, response) => {
         if ( err ) res.send(err)
          res.render('index', {people: response})
     })
