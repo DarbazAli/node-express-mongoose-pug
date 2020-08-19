@@ -10,14 +10,14 @@ Node.js is a platform built on Chrome's JavaScript runtime for easily building f
 ### Where to Use Node.js?
 Following are the areas where Node.js is proving itself as a perfect technology partner.
 
-I/O bound Applications
-Data Streaming Applications
-Data Intensive Real-time Applications (DIRT)
-JSON APIs based Applications
-Single Page Applications
+* I/O bound Applications
+* Data Streaming Applications
+* Data Intensive Real-time Applications (DIRT)
+* JSON APIs based Applications
+* Single Page Applications
 
 ### Where Not to Use Node.js?
-It is not advisable to use Node.js for CPU intensive applications.
+* It is not advisable to use Node.js for CPU intensive applications.
 
 
 ## Node.js Environment Setup
@@ -28,6 +28,16 @@ After you installed Node.js on you platfrom, you can acces node REPL from the co
 Also you can find witch version is installed on you platform by running this command:
 ```
 node --version
+v12.16.1
 ```
+
+### First Application
+First, let'sa see the components of a Node.js application. A Node.js application consists of the following three important components −
+
+- **Import required modules** − We use the require directive to load Node.js modules.
+
+- **Create server** − A server which will listen to client's requests similar to Apache HTTP Server.
+
+- **Read request and return response** − The server created in an earlier step will read the HTTP request made by the client which can be a browser or a console and return the response.
 
 
