@@ -12,8 +12,9 @@ html
             label(for="age") Age:
             input(type="number", name="age" min=15 max=99 value=25)
 
-            label(for="nationality") Nationality:
-            input(type="text", name="nationality")
+            label(for="country") Country:
+            //- input(type="text", name="nationality")
+            include ./countryList.pug
             br
             button(type="submit" class="button-primary") Submit
 
