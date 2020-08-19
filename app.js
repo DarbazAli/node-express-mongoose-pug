@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Person = require('./Schema');
+const bodyParser = require('body-parser');
+const Person = require('./Schema').Person;
 
 
 const app = express();
@@ -19,6 +20,9 @@ mongoose.connect(mongo_uri, {useUnifiedTopology: true, useNewUrlParser: true})
 app.set('views', './views')
 app.set('view engine', 'pug')
 
+// use body-parser middleware
+app.use(bodyParser.urlencoded({extended: false}))
+
 app.get('/', (req, res) => {
     res.render('index', {title: 'Home'})
 });
@@ -32,4 +36,31 @@ app.get('/about', (req, res) => {
 ================================================================*/
 app.get('/signup', (req, res) => {
     res.render('signup', {title: "Signup"})
+})
+
+
+/*================================================================ 
+    SETUP POST REQUEST ROUTER FOR SIGNUP PAGE
+================================================================*/
+app.post('/signup', (req, res) => {
+
+    // extract field values from the request body
+    const {name, age, country } = req.body;
+
+    // if one of the fields are empty, yeld an error and prevent from performing any action toward the database
+    if ( !name || !age || !country ) res.send("Sorry, you provided wrong data")
+    else {
+        // construct new person from field values
+        const newPerson = new Person({
+            name: name,
+            age: age,
+            nationality: country
+        })
+
+        // save the person to the database
+        newPerson.save((err, data) => {
+            if (err) res.send(err)
+            else res.send(data.name + " added successfully!")
+        })
+    }
 })
