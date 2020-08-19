@@ -39,7 +39,7 @@ app.get('/signup', (req, res) => {
 })
 
 
-/*================================================================ 
+/*================================================================
     SETUP POST REQUEST ROUTER FOR SIGNUP PAGE
 ================================================================*/
 app.post('/signup', (req, res) => {
@@ -63,4 +63,15 @@ app.post('/signup', (req, res) => {
             else res.send(data.name + " added successfully!")
         })
     }
+})
+
+
+/*================================================================
+    SETUP PEOPLE ROUTER TO RETRIVE DATA FROM DB
+================================================================*/
+app.get('/people', (req, res) => {
+    Person.find((err, response) => {
+        if ( err ) res.send(err)
+         res.render('people', {people: response})
+    })
 })
