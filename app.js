@@ -56,14 +56,11 @@ app.post('/signup', (req, res) => {
             age: age,
             nationality: country
         })
-
-        // save the person to the database
-        newPerson.save((err, data) => {
-            if (err) res.send(err)
-            else res.send(data.name + " added successfully!")
-        })
+        createAndSavePerson(newPerson, res)
     }
 })
+
+
 
 
 /*================================================================
@@ -75,3 +72,13 @@ app.get('/people', (req, res) => {
          res.render('index', {people: response})
     })
 })
+
+/*================================================================
+    SAVE QUERY
+================================================================*/
+var createAndSavePerson = function(Person, done) {
+    Person.save( (err, data ) => {
+        if ( err ) done.send(err)
+        else done.send(data.name + " added successfuly")
+    })
+};
