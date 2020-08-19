@@ -41,3 +41,43 @@ First, let'sa see the components of a Node.js application. A Node.js application
 - **Read request and return response** − The server created in an earlier step will read the HTTP request made by the client which can be a browser or a console and return the response.
 
 
+To create your first Node app, first make a directory and name it what ever you want, for exampel:
+```
+cd Desktop
+mkdir node-app
+cd node-app
+touch app.js
+```
+
+Now, to run app.js in node env. simply run this command in the commandline tool
+```
+node app.js
+```
+For now, the terminal wouldn't show anything, because we didn't write any code in the app.js yet.
+
+Now, let's create a simple server with `http` built-in module
+
+**app.js**
+```javascript
+const https = require('http');
+
+const hostname = '127.0.0.1';
+const port = 3000;
+
+const server = http.createServer((req, res) => {
+    res.statusCode = 200;
+    res.setHeader('Content-Type', 'text/plain');
+    res.end('Hello world');
+})
+
+server.listen(port, hostname, () => {
+    console.log(`Server running at http://${hostname}:${port}`);
+})
+
+```
+
+Now, if we run app.js again, it will show `Server running at http://127.0.0.1:3000` in the terminal.
+And by puting this url in your browser, it will show `Hello world` message in response
+
+The server is now app and running, and its ready to create http requests and responses, or anything we might want to do with the server.
+
