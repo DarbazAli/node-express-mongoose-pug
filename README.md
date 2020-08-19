@@ -120,3 +120,8 @@ app.listen(3000, () => console.log("Listening on 3000");
 app.get('/', (req, res) => res.send("Hello world"))
 
 ```
+
+As you can see, our code is much cleaner with express server.
+
+
+### express.js - Sering HTML file
