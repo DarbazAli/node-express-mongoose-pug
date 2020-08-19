@@ -81,3 +81,42 @@ And by puting this url in your browser, it will show `Hello world` message in re
 
 The server is now app and running, and its ready to create http requests and responses, or anything we might want to do with the server.
 
+## Working with express.js
+As you see, creating a simple server requires to write some code, but, ther's a better alternative while working with server.
+Express is a Node.js thirt-party module, it allows us to create complex server-side apps with much less code than it's buit-in http module.
+
+### Installing express.js
+express.js is a third-party module, it has to be installed with `npm`, `npm` is node package manager, it comes with Node.js package installed on your machine. to ensure that `npm` is installed, simply run this command in the terminal:
+```
+npm --version
+6.13.4 // in my case
+```
+
+To create an `npm` dev environment run this command `npm init -y`, this script creates a file called, **package.json**.
+This file is the manifesto to our Node.js application. now, we can install node packages in the terminal. for example
+**terminal**
+```
+npm install express --save
+```
+**npm** is commandline tool to install packages
+**install** is the installing command.
+**exprss** is the name of th package we want to install.
+**--save** is a flag to tell that, install this package as a production dependency.
+
+After express is being installed, now we can use express in the `app.js`
+
+**app.js**
+```javascript
+// import express in to app.js
+const express = require('express');
+
+// create an instance of express
+const app = express();
+
+// creat a server with express
+app.listen(3000, () => console.log("Listening on 3000");
+
+// setup home or root router for get requestes in the browser
+app.get('/', (req, res) => res.send("Hello world"))
+
+```
