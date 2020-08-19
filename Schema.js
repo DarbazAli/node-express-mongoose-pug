@@ -8,6 +8,5 @@ const personSchema  = new Schema({
     nationality: String
 });
 
-const Person = mongoose.model('Person', personSchema);
+exports.Person = mongoose.model('Person', personSchema);
 
-exports.Person;
