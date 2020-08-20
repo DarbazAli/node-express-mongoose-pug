@@ -98,3 +98,10 @@ var createAndSavePerson = function(Person, done) {
         else done.send(data.name + " added successfuly")
     })
 };
+
+
+app.post('/delete', (req, res) => {
+    var id = req.body.id;
+    Person.findOneAndDelete({_id: id}).exec();
+    res.redirect('/people?query=All')
+})
