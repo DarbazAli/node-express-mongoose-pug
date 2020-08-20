@@ -1,6 +1,7 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
+const { response } = require('express');
 const Person = require('./Schema').Person;
 
 
@@ -68,13 +69,24 @@ app.post('/signup', (req, res) => {
 ================================================================*/
 app.get('/people', (req, res) => {
     // get query name from submit form
-    let nanme = req.query.query
+    let name = req.query.query
+
+    // search for all entries
+    if (name === "All" || name === 'all') {
+        Person.find( (err, response) => {
+            if ( err ) res.send(err)
+            res.render('index', {people: response})
+        })
+    }
+    else {
+        // look for names with query name inside the db
+        Person.find({name: name}, (err, response) => {
+            if ( err ) res.send(err)
+            res.render('index', {people: response})
+        })
+    }
     
-    // look for names with query name inside the db
-    Person.find({name: nanme}, (err, response) => {
-        if ( err ) res.send(err)
-         res.render('index', {people: response})
-    })
+    
 })
 
 /*================================================================
