@@ -1,8 +1,8 @@
 const express = require('express');
 const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
-const { response } = require('express');
 const Person = require('./Schema').Person;
+require('dotenv').config();
 
 
 const app = express();
@@ -13,7 +13,7 @@ app.listen(3000, () => console.log("Listening on 3000"))
 /*================================================================ 
     CONNECT TO MONGODB DB
 ================================================================*/
-const mongo_uri = "mongodb://localhost:27017/test";
+const mongo_uri = process.env.MONGO_URI;
 mongoose.connect(mongo_uri, {useUnifiedTopology: true, useNewUrlParser: true})
 
 
